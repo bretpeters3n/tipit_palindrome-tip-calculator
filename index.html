@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipit - palindrome tip calculator</title>
+</head>
+<body>
+
+    <label for="value01">Enter your total:</label>
+    <input id="value01" type="text" />
+    <span> + </span>
+    <label for="value02">Enter your tip %:</label>
+    <input id="value02" type="text" />
+    <input type="submit" onclick="output();">
+    <p id="result"> </p>
+
+    <script type="text/javascript" language="javascript" charset="UTF-8">
+
+        function output(){
+            var value01 = document.getElementById('value01').value;
+            var value02 = document.getElementById('value02').value;
+            document.getElementById('result').innerHTML = parseFloat(value01) + (parseFloat(value01) * parseFloat(value02));
+        }
+
+    </script>
+
+</body>
+</html>
