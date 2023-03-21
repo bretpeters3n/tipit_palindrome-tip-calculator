@@ -1,0 +1,26 @@
+{
+  "name": "tipit",
+  "version": "1.0.0",
+  "description": "palindrome tip calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bretpeters3n/tipit_palindrome-tip-calculator.git"
+  },
+  "author": "Bret Petersen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bretpeters3n/tipit_palindrome-tip-calculator/issues"
+  },
+  "homepage": "https://github.com/bretpeters3n/tipit_palindrome-tip-calculator#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0"
+  }
+}
