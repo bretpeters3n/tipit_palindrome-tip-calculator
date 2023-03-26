@@ -17,9 +17,19 @@ input.dollar-sign-start {
     padding-left: 22px;
 
 }
-input.custom-perc-field{
+#placeholder-custom-perc-field{
+  position: relative;
+  display: inline-block;
   pointer-events: none;
   opacity: .25;
+}
+#placeholder-custom-perc-field::after {
+    position: absolute;
+    right: 5px;
+    top: 1px;
+    content: attr(data-placeholder);
+    pointer-events: none;
+    opacity: 0.6;
 }
 </style>
 
@@ -47,7 +57,9 @@ input.custom-perc-field{
       <!-- <label onClick="otherFruit()"> -->
       <input type="radio" id="tip-custom-perc" name="tip-percent" value="other" onclick="tipCustomPercValue_ON();" />
         <label for="tip-custom-perc">custom %</label>
-        <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
+        <div id="placeholder-custom-perc-field" style="display: inline;" data-placeholder="%">
+          <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
+        </div>
         
         <!-- <input type="submit" value="Submit"> -->
      </form>
@@ -71,13 +83,13 @@ input.custom-perc-field{
         }
         function tipCustomPercValue_ON() {
           console.log('test-toggle-ON');
-          var element = document.getElementById("tip-custom-perc-value");
+          var element = document.getElementById("placeholder-custom-perc-field");
           element.style.opacity = "1";
           element.style.pointerEvents = "auto";
         }
         function tipCustomPercValue_OFF() {
           console.log('test-toggle-OFF');
-          var element = document.getElementById("tip-custom-perc-value");
+          var element = document.getElementById("placeholder-custom-perc-field");
           element.style.opacity = ".25";
           element.style.pointerEvents = "none";
         }
