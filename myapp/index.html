@@ -17,6 +17,10 @@ input.dollar-sign-start {
     padding-left: 22px;
 
 }
+input.custom-perc-field{
+  pointer-events: none;
+  opacity: .25;
+}
 </style>
 
 </head>
@@ -32,18 +36,18 @@ input.dollar-sign-start {
     <input id="value01" type="text" class="dollar-sign-start block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
     <label for="value02">Choose your tip %:</label>
     <form>
-      <input type="radio" id="tip-10-perc" name="tip-percent" value=".1">
+      <input type="radio" id="tip-10-perc" name="tip-percent" value=".1" onclick="tipCustomPercValue_OFF();">
       <label for="tip-10-perc">10%</label>
-      <input type="radio" id="tip-15-perc" name="tip-percent" value=".15">
+      <input type="radio" id="tip-15-perc" name="tip-percent" value=".15" onclick="tipCustomPercValue_OFF();">
       <label for="tip-15-perc">15%</label>
-      <input type="radio" id="tip-20-perc" name="tip-percent" value=".2">
+      <input type="radio" id="tip-20-perc" name="tip-percent" value=".2" onclick="tipCustomPercValue_OFF();">
       <label for="tip-20-perc">20%</label>
-      <input type="radio" id="tip-25-perc" name="tip-percent" value=".25">
+      <input type="radio" id="tip-25-perc" name="tip-percent" value=".25" onclick="tipCustomPercValue_OFF();">
       <label for="tip-25-perc">25%</label>
       <!-- <label onClick="otherFruit()"> -->
-      <input type="radio" id="tip-custom-perc" name="tip-percent" value="other" />
+      <input type="radio" id="tip-custom-perc" name="tip-percent" value="other" onclick="tipCustomPercValue_ON();" />
         <label for="tip-custom-perc">custom %</label>
-        <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
+        <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
         
         <!-- <input type="submit" value="Submit"> -->
      </form>
@@ -64,6 +68,18 @@ input.dollar-sign-start {
             }
             
             document.getElementById('result').innerHTML = parseFloat(value01) + (parseFloat(value01) * parseFloat(value02));
+        }
+        function tipCustomPercValue_ON() {
+          console.log('test-toggle-ON');
+          var element = document.getElementById("tip-custom-perc-value");
+          element.style.opacity = "1";
+          element.style.pointerEvents = "auto";
+        }
+        function tipCustomPercValue_OFF() {
+          console.log('test-toggle-OFF');
+          var element = document.getElementById("tip-custom-perc-value");
+          element.style.opacity = ".25";
+          element.style.pointerEvents = "none";
         }
 
     </script>
