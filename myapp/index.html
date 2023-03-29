@@ -24,9 +24,9 @@ input.dollar-sign-start {
   opacity: .25;
 }
 #placeholder-custom-perc-field::after {
-    position: absolute;
-    right: 5px;
-    top: 1px;
+    position: relative;
+    left: 145px;
+    top: 10px;
     content: attr(data-placeholder);
     pointer-events: none;
     opacity: 0.6;
@@ -36,7 +36,7 @@ input.dollar-sign-start {
 </head>
 <body class="flex justify-center">
 
-  <div class="w-6/12">
+  <div class="w-80">
 
     <h1 class="text-3xl font-bold text-purple-600">
       Tipit - palindrome tip calculator
@@ -51,14 +51,14 @@ input.dollar-sign-start {
       <input type="radio" id="tip-15-perc" name="tip-percent" value=".15" onclick="tipCustomPercValue_OFF();">
       <label for="tip-15-perc">15%</label>
       <input type="radio" id="tip-20-perc" name="tip-percent" value=".2" onclick="tipCustomPercValue_OFF();">
-      <label for="tip-20-perc">20%</label>
+      <label for="tip-20-perc">20%</label><br>
       <input type="radio" id="tip-25-perc" name="tip-percent" value=".25" onclick="tipCustomPercValue_OFF();">
       <label for="tip-25-perc">25%</label>
       <!-- <label onClick="otherFruit()"> -->
       <input type="radio" id="tip-custom-perc" name="tip-percent" value="other" onclick="tipCustomPercValue_ON();" />
         <label for="tip-custom-perc">custom %</label>
         <div id="placeholder-custom-perc-field" style="display: inline;" data-placeholder="%">
-          <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
+          <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="w-24 float-right custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
         </div>
         
         <!-- <input type="submit" value="Submit"> -->
@@ -71,8 +71,29 @@ input.dollar-sign-start {
     <script type="text/javascript" language="javascript" charset="UTF-8">
 
         const palindromeTotals = [];
-        palindromeTotals.push("1.10", "2.20", "3.30", "4.40", "5.50", "6.60", "7.70", "8.80", "9.90", "10.01", "11.11", "12.21", "13.31", "14.41", "15.51", "16.61", "17.71", "18.81", "19.91", "20.02");
-        console.log(palindromeTotals.length); // 3  
+        for (let i = 0; i < 1000; i++) {
+          
+          function reversedNum(num) {
+            return (
+              parseFloat(
+                num
+                  .toString()
+                  .split('')
+                  .reverse()
+                  .join('')
+              ) * Math.sign(num)
+            )                 
+          }
+
+          let iReversed = reversedNum(i);
+          palindromeValue = i + '.' + iReversed;
+          palindromeValue = parseFloat(palindromeValue);
+          console.log(typeof palindromeValue);
+          palindromeTotals.push(palindromeValue);
+          console.log(palindromeTotals[i]);
+        }
+        // palindromeTotals.push("1.10", "2.20", "3.30", "4.40", "5.50", "6.60", "7.70", "8.80", "9.90", "10.01", "11.11", "12.21", "13.31", "14.41", "15.51", "16.61", "17.71", "18.81", "19.91", "20.02");
+        // console.log(palindromeTotals.length); // 3  
 
         function output(){
             var value01 = document.getElementById('value01').value;
