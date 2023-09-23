@@ -9,107 +9,7 @@
     <!-- <link href="./dist/output.css" rel="stylesheet"> -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,800');
-
-/* VARS */
-:root {
-  --open-sans: 'Open Sans', 'Helvetica', sans-serif;
-  --darkNavy: #213140;
-  --teal1: #66B3FB;
-  --teal2: #4B9DEA;
-  --charcoal: #555555;
-  --gold: #B6985A;
-  --activeShadow: 0 0 10px rgba($teal1, .5);
-}
-
-/* STYLE THE HTML ELEMENTS */
-body, html {
-  font-family: var(--open-sans);
-  -webkit-font-smoothing: antialiased;
-}
-h1 {
-  color: purple;
-}
-input.dollar-sign-start {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="grey"><text x="10" y="22" style="font: normal 16px Arial;">$</text></svg>') no-repeat;
-  box-sizing: border-box;
-  font: 16px "Arial";
-  padding-left: 22px;
-
-}
-#placeholder-custom-perc-field{
-  position: relative;
-  pointer-events: none;
-  opacity: 0;
-  display: inline-block;
-}
-#placeholder-custom-perc-field::after {
-  position: relative;
-  left: 145px;
-  top: 10px;
-  content: attr(data-placeholder);
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.toggle {
-  margin: 0 0 1.5rem;
-  box-sizing: border-box;
-  font-size: 0;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-}
-.toggle input {
-  width: 0;
-  height: 0;
-  position: absolute;
-  /* left: -9999px; */
-}
-.toggle #placeholder-custom-perc-field input {
-  width: 73px;
-  height: 38px;
-  position: relative;
-  right: 72px;
-  z-index: 5;
-  border-radius: 0 6px 6px 0;
-}
-.toggle input:checked + label {
-  background-color: #4B9DEA;
-  color: #FFF;
-  box-shadow: 0 0 10px rgb(102 179 251 / 50%);
-  border-color: #4B9DEA;
-  z-index: 1;
-}
-.toggle input + label:first-of-type {
-  border-radius: 6px 0 0 6px;
-  border-right: none;
-}
-.toggle input + label:last-of-type {
-  border-radius: 0 6px 6px 0;
-  border-left: none;
-}
-.toggle input + label {
-  margin: 0;
-  padding: 0.5rem 0.5rem;
-  box-sizing: border-box;
-  position: relative;
-  /* flex: 0 0 50%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: solid 1px #DDD;
-  background-color: #FFF;
-  font-size: 1rem;
-  line-height: 140%;
-  font-weight: 400;
-  text-align: center;
-  box-shadow: 0 0 0 rgb(255 255 255 / 0%);
-  transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
-}
-</style>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 <body class="flex justify-center">
@@ -120,8 +20,8 @@ input.dollar-sign-start {
       Tipit - palindrome tip calculator
     </h1>
     <div class="pb-2">
-      <label for="totalBeforeTip">Enter your total:</label>
-      <input id="totalBeforeTip" type="text" class="dollar-sign-start block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
+      <label for="originalPrice">Enter your total:</label>
+      <input id="originalPrice" type="text" class="dollar-sign-start block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
     </div>
 
     <!-- <fieldset class="pb-2">
@@ -142,7 +42,7 @@ input.dollar-sign-start {
     </fieldset> -->
 
     <fieldset class="pb-2">
-      <legend for="tipPercentage">Choose your tip %:</legend>
+      <legend for="eTipPerc">Choose your tip %:</legend>
       <form class="toggle">
         <input type="radio" id="tip-10-perc" name="tip-percent" value=".1" onclick="tipCustomPercValue_OFF();">
         <label for="tip-10-perc">10%</label>
@@ -155,7 +55,7 @@ input.dollar-sign-start {
         <input type="radio" id="tip-custom-perc" name="tip-percent" value="other" onclick="tipCustomPercValue_ON();" />
         <label for="tip-custom-perc">custom</label>
         <div id="placeholder-custom-perc-field" data-placeholder="%">
-          <input type ="text" name="tip-percent" id="tip-custom-perc-value" class="w-24 float-right custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
+          <input title="tip custom percent value" type ="text" name="tip-percent" id="tip-custom-perc-value" class="w-24 float-right custom-perc-field bg-white border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" />
         </div>
       </form>
     </fieldset>
@@ -163,41 +63,48 @@ input.dollar-sign-start {
       <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" type="submit" onclick="output();">Calculate</button>
     </div>
     <div class="pb-2">
-      <p id="total-exact"></p>
-      <p id="total-high"></p>
-      <p id="total-low"></p>
-      <p id="price-high"></p>
-      <p id="price-low"></p>
-      <p id="tip-high"></p>
-      <p id="tip-low"></p>
+      <p id="eTotal"></p>
+      <p id="ePrice"></p>
+      <p id="eTip"></p>
+      <p id="eTipPerc"></p>
+      <p>&nbsp;</p>
+      <p id="hTotal"></p>
+      <!-- <p id="hPrice"></p> -->
+      <p id="hTip"></p>
+      <p id="hTipPerc"></p>
+      <p>&nbsp;</p>
+      <p id="lTotal"></p>
+      <!-- <p id="lPrice"></p> -->
+      <p id="lTip"></p>
+      <p id="lTipPerc"></p>
     </div>
   </div>
 
   <script type="text/javascript" language="javascript" charset="UTF-8">
 
     // Sequential palindrome numbers into array for testing
-    const palindromeTotals = [];
-    for (let i = 0; i < 100; i++) {
-      function reversedNum(num) {
-        return (
-          parseFloat(
-            num
-              .toString()
-              .split('')
-              .reverse()
-              .join('')
-          ) * Math.sign(num)
-        )                 
-      }
-      let iReversed = reversedNum(i);
-      // console.log(iReversed);
-      palindromeValue = i + '.' + iReversed;
-      palindromeValue = parseFloat(palindromeValue);
-      // console.log(typeof palindromeValue);
-      palindromeTotals.push(palindromeValue);
-      console.log(palindromeTotals[i]);
-      palindromeTotals[i] = palindromeTotals[i] + 1;
-    }
+    // const palindromeTotals = [];
+    // for (let i = 0; i < 100; i++) {
+    //   function reversedNum(num) {
+    //     return (
+    //       parseFloat(
+    //         num
+    //           .toString()
+    //           .split('')
+    //           .reverse()
+    //           .join('')
+    //       ) * Math.sign(num)
+    //     )                 
+    //   }
+    //   let iReversed = reversedNum(i);
+    //   // console.log(iReversed);
+    //   palindromeValue = i + '.' + iReversed;
+    //   palindromeValue = parseFloat(palindromeValue);
+    //   // console.log(typeof palindromeValue);
+    //   palindromeTotals.push(palindromeValue);
+    //   console.log(palindromeTotals[i]);
+    //   palindromeTotals[i] = palindromeTotals[i] + 1;
+    // }
     
     // Display high palindrome number and low palindrome number, or if the number is already a palindrome number
 
@@ -206,37 +113,108 @@ input.dollar-sign-start {
     // console.log(palindromeTotals.length); // 3  
     function output(){
 
-        var totalBeforeTip = document.getElementById('totalBeforeTip').value;
-        // Calculate tip
-        if (document.querySelector('input[id="tip-custom-perc"]:checked')) {
-          var numToPerc = .01;
-          var tipPercentage = (document.querySelector('input[id="tip-custom-perc-value"]').value) * numToPerc;
-        } else {
-          var tipPercentage = document.querySelector('input[name="tip-percent"]:checked').value;
-        }
-        // Set values (totals, prices, and tips)
-        totalBeforeTip = parseFloat(totalBeforeTip);
-        var tipTotal = parseFloat(totalBeforeTip) * parseFloat(tipPercentage);
-        var totalWithTip = totalBeforeTip + tipTotal;
+      var ePrice = document.getElementById('originalPrice').value;
+      // Calculate tip
+      if (document.querySelector('input[id="tip-custom-perc"]:checked')) {
+        var numToPerc = .01;
+        var eTipDecimal = (document.querySelector('input[id="tip-custom-perc-value"]').value) * numToPerc;
+      } else {
+        var eTipDecimal = document.querySelector('input[name="tip-percent"]:checked').value;
+      }
+      // Set EXACT values (totals, prices, and tips)
+      ePrice = parseFloat(ePrice);
+      var eTipPerc = eTipDecimal * 100 + '%';
+      var eTip = parseFloat(ePrice) * parseFloat(eTipDecimal);
+      var eTotal = ePrice + eTip;
 
-        // take 'totalWithTip' and only keep numbers before decimal
-        var totalFullNumber = Math.floor(totalWithTip);
-        // add decimal and reversed version of 'totalFullNumber' to create the palindrome
-        var totalHighPalindrome = totalFullNumber + (reversedNum(totalFullNumber) / 100);
-        // make sure 'totalHighPalindrome' is higher or equal to 'totalWithTip'
-        // write that next
+      // take 'eTotal' and only keep numbers before decimal
+      var totalFullNumber = Math.floor(eTotal);
+      var totalFullNumberPLUSONE = Math.floor(eTotal) + 1;
+      var totalFullNumberMINUSONE = Math.floor(eTotal) - 1;
 
-        // Set high total
-        var totalHigh = totalHighPalindrome;        
+      // set variable for division based on length of total 
+      var lengthDivider;
+      if (totalFullNumber.toString().length == 2) {
+        console.log('two digit number');
+        lengthDivider = 100;
+      }
+      if (totalFullNumber.toString().length == 3) {
+        console.log('three digit number');
+        lengthDivider = 1000;
+      }
+      if (totalFullNumber.toString().length == 4) {
+        console.log('four digit number');
+        lengthDivider = 10000;
+      }
+      if (totalFullNumber.toString().length == 5) {
+        console.log('four digit number');
+        lengthDivider = 100000;
+      }
+      if (totalFullNumber.toString().length == 6) {
+        console.log('four digit number');
+        lengthDivider = 1000000;
+      }
+      // NEXT
 
-        // Print values (totals, prices, and tips)
-        document.getElementById('total-exact').innerHTML = 'Exact total = ' + totalWithTip + ' @ ' + tipPercentage;
-        document.getElementById('total-high').innerHTML = 'High total = ' + totalHigh;
-        document.getElementById('total-low').innerHTML = 'Low total = ' + 0;
-        document.getElementById('price-high').innerHTML = 'High price = ' + 0;
-        document.getElementById('price-low').innerHTML = 'Low price = ' + 0;
-        document.getElementById('tip-high').innerHTML = 'High tip = ' + 0;
-        document.getElementById('tip-low').innerHTML = 'Low tip = ' + 0;
+      // add decimal and reversed version of 'totalFullNumber' to create the palindrome
+      var hTotal = totalFullNumber + (reversedNum(totalFullNumber) / lengthDivider);
+      var lTotal = totalFullNumberMINUSONE + (reversedNum(totalFullNumberMINUSONE) / lengthDivider);
+
+      // make sure 'hTotalindrome' is higher or equal to 'eTotal'
+      if (hTotal < eTotal) {
+        // test with '27.77'
+        // alert ("Your high and low palindromes are incorrect. Apply auto fix.");
+        // add decimal and reversed version of 'totalFullNumberPLUSONE' to create the palindrome
+        hTotal = totalFullNumberPLUSONE + (reversedNum(totalFullNumberPLUSONE) / lengthDivider);
+        lTotal = totalFullNumber + (reversedNum(totalFullNumber) / lengthDivider);
+        // var lTotal = (totalFtotalFullNumberPLUSONEullNumber - 1) + (reversedNum(totalFullNumberPLUSONE) / 100);
+      } else if (hTotal == eTotal) {
+        // WHAT TO DO HERE? START with ONE option (because they nailed the palindrome). END with THREE options (original, high, and low)
+        // alert ("Your total is already a palindrome!");
+      } else if (hTotal > eTotal) {
+        // do nothing
+        // alert ("Your high and low palindromes are correct");
+      }
+
+      // export num and reversed num for debugging
+      console.log(totalFullNumber);
+      console.log(reversedNum(totalFullNumber) / 1000);
+
+      // Set HIGH and LOW values (totals, and tips)
+      var hTip = hTotal - ePrice;
+      hTip = hTip * 100;
+      hTip = Math.floor(hTip);
+      hTip = hTip / 100;
+      var hTipPerc = (hTip / hTotal) * 100;
+      hTipPerc = hTipPerc * 100;
+      hTipPerc = Math.floor(hTipPerc);
+      hTipPerc = hTipPerc / 100;
+      hTipPerc = hTipPerc + '%';
+      var lTip = lTotal - ePrice;
+      lTip = lTip * 100;
+      lTip = Math.floor(lTip);
+      lTip = lTip / 100;
+      var lTipPerc = (lTip / lTotal) * 100;
+      lTipPerc = lTipPerc * 100;
+      lTipPerc = Math.floor(lTipPerc);
+      lTipPerc = lTipPerc / 100;
+      lTipPerc = lTipPerc + '%';
+
+      // Print values (totals, prices, and tips)
+      document.getElementById('eTotal').innerHTML = 'Exact total = ' + eTotal;
+      document.getElementById('ePrice').innerHTML = 'Exact price = ' + ePrice;
+      document.getElementById('eTip').innerHTML = 'Exact tip = ' + eTip;
+      document.getElementById('eTipPerc').innerHTML = 'Exact tip % = ' + eTipPerc;
+
+      document.getElementById('hTotal').innerHTML = 'High total = ' + hTotal;
+      // document.getElementById('hPrice').innerHTML = 'High price = ' + 0;
+      document.getElementById('hTip').innerHTML = 'High tip = ' + hTip;
+      document.getElementById('hTipPerc').innerHTML = 'High tip % = ' + hTipPerc;
+      
+      document.getElementById('lTotal').innerHTML = 'Low total = ' + lTotal;
+      // document.getElementById('lPrice').innerHTML = 'Low price = ' + 0;
+      document.getElementById('lTip').innerHTML = 'Low tip = ' + lTip;
+      document.getElementById('lTipPerc').innerHTML = 'Low tip % = ' + lTipPerc;
     }
     function tipCustomPercValue_ON() {
       console.log('test-toggle-ON');
