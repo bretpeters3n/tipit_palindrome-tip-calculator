@@ -8,8 +8,9 @@
     
     <!-- <link href="./dist/output.css" rel="stylesheet"> -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/splide.min.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 
 </head>
 <body class="flex justify-center">
@@ -78,6 +79,17 @@
       <p id="lTip"></p>
       <p id="lTipPerc"></p>
     </div>
+
+    <section class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 mb-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">Slide 01</li>
+          <li class="splide__slide block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 mb-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">Slide 02</li>
+          <li class="splide__slide block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">Slide 03</li>
+        </ul>
+      </div>
+    </section>
+
   </div>
 
   <script type="text/javascript" language="javascript" charset="UTF-8">
@@ -121,11 +133,12 @@
       } else {
         var eTipDecimal = document.querySelector('input[name="tip-percent"]:checked').value;
       }
-      // Set EXACT values (totals, prices, and tips)
-      ePrice = parseFloat(ePrice);
+      // Set EXACT values (totals, prices, and tips) & make them have a decimal and cents
+      ePrice = parseFloat(ePrice).toFixed(2);
       var eTipPerc = eTipDecimal * 100 + '%';
       var eTip = parseFloat(ePrice) * parseFloat(eTipDecimal);
-      var eTotal = ePrice + eTip;
+      eTip = eTip.toFixed(2);
+      var eTotal = (Number(ePrice) + Number(eTip)).toFixed(2);
 
       // take 'eTotal' and only keep numbers before decimal
       var totalFullNumber = Math.floor(eTotal);
@@ -154,19 +167,34 @@
         console.log('four digit number');
         lengthDivider = 1000000;
       }
-      // NEXT
+      // NEXT, convert above ^ to function that will handle unlimited length numbers
+        // THEN, convert numbers to (XXX.XX) numbers with decimal and cents. Either add decimals or cut off and round longer decimals.
 
-      // add decimal and reversed version of 'totalFullNumber' to create the palindrome
-      var hTotal = totalFullNumber + (reversedNum(totalFullNumber) / lengthDivider);
-      var lTotal = totalFullNumberMINUSONE + (reversedNum(totalFullNumberMINUSONE) / lengthDivider);
+      // create after decimal values
+      var totalFullNumberDec = (reversedNum(totalFullNumber) / lengthDivider) * 100;
+      var totalFullNumberDec = Math.floor(totalFullNumberDec);
+      var totalFullNumberDec = totalFullNumberDec / 100;
+      var totalFullNumberMINUSONEDec = (reversedNum(totalFullNumberMINUSONE) / lengthDivider) * 100;
+      var totalFullNumberMINUSONEDec = Math.floor(totalFullNumberMINUSONEDec);
+      var totalFullNumberMINUSONEDec = totalFullNumberMINUSONEDec / 100;
+      // add decimal and 'after decimal values' above to 'totalFullNumber' to create the palindrome
+      var hTotal = totalFullNumber + totalFullNumberDec;
+      var lTotal = totalFullNumberMINUSONE + totalFullNumberMINUSONEDec;
 
       // make sure 'hTotalindrome' is higher or equal to 'eTotal'
       if (hTotal < eTotal) {
         // test with '27.77'
         // alert ("Your high and low palindromes are incorrect. Apply auto fix.");
+        // create after decimal values
+        var totalFullNumberPLUSONEDec = (reversedNum(totalFullNumberPLUSONE) / lengthDivider) * 100;
+        var totalFullNumberPLUSONEDec = Math.floor(totalFullNumberPLUSONEDec);
+        var totalFullNumberPLUSONEDec = totalFullNumberPLUSONEDec / 100;
+        totalFullNumberDec = (reversedNum(totalFullNumber) / lengthDivider) * 100;
+        totalFullNumberDec = Math.floor(totalFullNumberDec);
+        totalFullNumberDec = totalFullNumberDec / 100;
         // add decimal and reversed version of 'totalFullNumberPLUSONE' to create the palindrome
-        hTotal = totalFullNumberPLUSONE + (reversedNum(totalFullNumberPLUSONE) / lengthDivider);
-        lTotal = totalFullNumber + (reversedNum(totalFullNumber) / lengthDivider);
+        hTotal = totalFullNumberPLUSONE + totalFullNumberPLUSONEDec;
+        lTotal = totalFullNumber + totalFullNumberDec;
         // var lTotal = (totalFtotalFullNumberPLUSONEullNumber - 1) + (reversedNum(totalFullNumberPLUSONE) / 100);
       } else if (hTotal == eTotal) {
         // WHAT TO DO HERE? START with ONE option (because they nailed the palindrome). END with THREE options (original, high, and low)
@@ -177,8 +205,8 @@
       }
 
       // export num and reversed num for debugging
-      console.log(totalFullNumber);
-      console.log(reversedNum(totalFullNumber) / 1000);
+      console.log('total full number: ' + totalFullNumber);
+      console.log('total full number reversed: ' + (reversedNum(totalFullNumber) / lengthDivider));
 
       // Set HIGH and LOW values (totals, and tips)
       var hTip = hTotal - ePrice;
@@ -239,6 +267,10 @@
         ) * Math.sign(num)
       )                 
     }
+  </script>
+
+  <script>
+    new Splide( '.splide' ).mount();
   </script>
 </body>
 </html>
