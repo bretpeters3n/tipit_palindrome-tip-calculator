@@ -8,11 +8,9 @@
 
 # Tipit - Palindrom tip calculator
   <p align="center">
-    <img src="https://img.shields.io/badge/VITE-purple"/>
     <img src="https://img.shields.io/badge/HTML-orange"/>
     <img src="https://img.shields.io/badge/CSS-yellow"/>
-    <img src="https://img.shields.io/badge/FLEXBOX-red"/>
-    <img src="https://img.shields.io/badge/CssRollover-pink"/>
+    <img src="https://img.shields.io/badge/JS-purple"/>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -51,9 +49,9 @@ This website is an interactive JS app prototype that allows users to create a ti
 
 <!-- BUILT WITH -->
 ### Built With
-* VITE
 * HTML
 * CSS
+* JavaScript
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
