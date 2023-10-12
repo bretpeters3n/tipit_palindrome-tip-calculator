@@ -66,7 +66,8 @@ This website is an interactive JS app prototype that allows users to create a ti
 
 <!-- PREVIEW -->
 ## Preview
-![image](./src/assets/screenshot.png)
+N/A
+<!-- ![image](./src/assets/screenshot.png) -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
