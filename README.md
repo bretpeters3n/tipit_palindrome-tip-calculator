@@ -13,12 +13,6 @@
     <img src="https://img.shields.io/badge/CSS-yellow"/>
     <img src="https://img.shields.io/badge/FLEXBOX-red"/>
     <img src="https://img.shields.io/badge/CssRollover-pink"/>
-  <p align="center">
-    This website is a remake of my Full Stack Web Dev Bootcamp assignment '02-Advanced-CSS' redone in React. This website is a static HTML website using Flexbox, variables passed as props to React components, and basic CSS rollovers.
-    <br />
-    <br />
-    <a href="https://bretpeters3n.github.io/tipit_palindrome-tip-calculator/">View Demo</a>
-  </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -52,7 +46,7 @@
 
 <!-- OVERVIEW -->
 ## Overview
-This website is a static HTML website using semantic tags and minimal CSS. This project is part of the learning experience on my journey to become a Full Stack Web Developer. 
+This website is an interactive JS app prototype that allows users to create a tip for a service that brings the grand total of the service to a palindrome number. 
 
 
 <!-- BUILT WITH -->
@@ -81,7 +75,7 @@ This website is a static HTML website using semantic tags and minimal CSS. This 
 
 <!-- DEMO -->
 ## Demo
-[View Demo](https://bretpeters3n.github.io/02-Advanced-CSS_Reactified/)
+[View Demo](https://bretpeters3n.github.io/tipit_palindrome-tip-calculator/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
