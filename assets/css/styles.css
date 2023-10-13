@@ -15,10 +15,13 @@
 body, html {
   font-family: var(--open-sans);
   -webkit-font-smoothing: antialiased;
-  /* background-color: #213140; */
+  background-color: #ddd;
 }
 h1 {
   color: purple;
+}
+input {
+  background-color: white !important;
 }
 input.dollar-sign-start {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="grey"><text x="10" y="22" style="font: normal 16px Arial;">$</text></svg>') no-repeat;
@@ -97,4 +100,12 @@ input.dollar-sign-start {
   text-align: center;
   box-shadow: 0 0 0 rgb(255 255 255 / 0%);
   transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.hide {
+  display: none;
+}
+
+.splide:not(.is-overflow) .splide__arrows {
+  display: none;
 }
