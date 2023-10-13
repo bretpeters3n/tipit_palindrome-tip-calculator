@@ -169,7 +169,8 @@
       }
       // Set EXACT values (totals, prices, and tips) & make them have a decimal and cents
       ePrice = parseFloat(ePrice).toFixed(2);
-      var eTipPerc = eTipDecimal * 100 + '%';
+      // var eTipPerc = eTipDecimal * 100 + '%';
+      var eTipPerc = eTipDecimal * 100;
       var eTip = parseFloat(ePrice) * parseFloat(eTipDecimal);
       eTip = eTip.toFixed(2);
       var eTotal = (Number(ePrice) + Number(eTip)).toFixed(2);
@@ -243,17 +244,16 @@
       console.log('total full number reversed: ' + (reversedNum(totalFullNumber) / lengthDivider));
 
       hTotal = (Math.round(hTotal * 100) / 100).toFixed(2);
-      hTip = (Math.round(hTip * 100) / 100).toFixed(2);
       hTipPerc = (Math.round(hTipPerc * 100) / 100).toFixed(2);
       lTotal = (Math.round(lTotal * 100) / 100).toFixed(2);
-      lTip = (Math.round(lTip * 100) / 100).toFixed(2);
+    
       lTipPerc = (Math.round(lTipPerc * 100) / 100).toFixed(2);
 
       // Set HIGH values (totals, and tips)
       var hTip = hTotal - ePrice;
-      hTip = hTip * 100;
-      hTip = Math.floor(hTip);
-      hTip = hTip / 100;
+      // hTip = hTip * 100;
+      // hTip = Math.floor(hTip);
+      // hTip = hTip / 100;
       var hTipPerc = (hTip / ePrice) * 100;
       hTipPerc = hTipPerc * 100;
       hTipPerc = Math.floor(hTipPerc);
@@ -261,14 +261,18 @@
       hTipPerc = hTipPerc + '%';
       // Set LOW values (totals, and tips)
       var lTip = lTotal - ePrice;
-      lTip = lTip * 100;
-      lTip = Math.floor(lTip);
-      lTip = lTip / 100;
+      // lTip = lTip * 100;
+      // lTip = Math.floor(lTip);
+      // lTip = lTip / 100;
       var lTipPerc = (lTip / ePrice) * 100;
       lTipPerc = lTipPerc * 100;
       lTipPerc = Math.floor(lTipPerc);
       lTipPerc = lTipPerc / 100;
       lTipPerc = lTipPerc + '%';
+
+      hTip = (Math.round(hTip * 100) / 100).toFixed(2);
+      lTip = (Math.round(lTip * 100) / 100).toFixed(2);
+      eTipPerc = (Math.round(eTipPerc * 100) / 100).toFixed(2);
 
       // Print values (totals, prices, and tips)
       // document.getElementById('eTotal').innerHTML = 'Exact total = ' + eTotal;
