@@ -15,7 +15,7 @@
 body, html {
   font-family: var(--open-sans);
   -webkit-font-smoothing: antialiased;
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 h1 {
   color: purple;
@@ -102,7 +102,8 @@ input.dollar-sign-start {
   transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
 }
 
-.hide {
+/* Splide specific */
+.hide, .splide__pagination {
   display: none;
 }
 
