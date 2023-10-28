@@ -17,6 +17,10 @@ body, html {
   -webkit-font-smoothing: antialiased;
   /* background-color: #ddd; */
 }
+main {
+  display: flex;
+  justify-content: center;
+}
 h1 {
   color: purple;
 }
