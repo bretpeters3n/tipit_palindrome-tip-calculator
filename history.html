@@ -30,14 +30,18 @@
         <p>Your tip history</p>
       </div>
 
-      <section id="splide" class="splide hide" aria-label="Splide Basic HTML Example">
-      </section>
+      <!-- <section id="splide" class="splide hide" aria-label="Splide Basic HTML Example"> -->
+        <div id="history"></div>
+      <!-- </section> -->
 
     </div>
   </main>
 
+  <!-- Added link to the jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <!-- scipt to autofill inputs and display Splide tips -->
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script-history.js"></script>
 
   <script>
     new Splide( '.splide' ).mount();

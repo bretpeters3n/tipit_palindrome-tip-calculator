@@ -117,3 +117,7 @@ input.dollar-sign-start {
 .splide:not(.is-overflow) .splide__arrows {
   display: none;
 }
+
+#history {
+  word-wrap:break-word;
+}

@@ -31,9 +31,9 @@ function tipChoice(choice) {
             tip: tip,
             tipPerc: tipPerc,
         };
-        let tipEventTest = [tipEvent.highLow, tipEvent.total];
-        tipEvents.unshift(tipEventTest);
-        localStorage.setItem('tipEvent', JSON.stringify(tipEvents));
+        let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total };
+        tipEvents.push(tipEventTest);
+        localStorage.setItem('tipEvents', JSON.stringify(tipEvents));
     } else if (choice=='low') {
         // console.log('You chose the low tip');
         let highLow = 'low';
@@ -49,9 +49,9 @@ function tipChoice(choice) {
             tip: tip,
             tipPerc: tipPerc,
         };
-        let tipEventTest = [tipEvent.highLow, tipEvent.total];
-        tipEvents.unshift(tipEventTest);
-        localStorage.setItem('tipEvent', JSON.stringify(tipEvents));
+        let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total };
+        tipEvents.push(tipEventTest);
+        localStorage.setItem('tipEvents', JSON.stringify(tipEvents));
     } else {
         console.log('high or low not caught, error.');
     }
@@ -66,13 +66,19 @@ let tipEvent = {
 };
 
 // initiate tipEvents array and add first object ^
-let tipEventTest = [tipEvent.highLow, tipEvent.total];
-let tipEvents = [];
-tipEvents.unshift(tipEventTest);
+let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total };
+
+// if array does not exist, create it and load it
+// if (tipEvents!=null) {
+//     let tipEvents = [];
+//     tipEvents.unshift(tipEventTest);
+// }
+
+let tipEvents = JSON.parse(localStorage.getItem('tipEvents'));
+if (tipEvents == null) {
+    console.log('null');
+    tipEvents = [];
+}
 
 // save in localStorage
-localStorage.setItem('tipEvent', JSON.stringify(tipEvents));
-
-
-// display tipEvents data on history page
-let history = document.getElementById('lTotal');
+localStorage.setItem('tipEvents', JSON.stringify(tipEvents));
