@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipit - palindrome tip calculator</title>
+    
+    <!-- <link href="./dist/output.css" rel="stylesheet"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./assets/js/splide.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+</head>
+<body class="bg-purple-50">
+
+  <nav class="flex justify-end p-4 gap-1">
+    <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full bg-white border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" type="submit" onclick="navigate('index.html');">Tip</button>
+    <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full bg-white border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2" type="submit" onclick="navigate('history.html');">History</button>
+  </nav>
+
+  <main>
+    <div class="w-80 px-5 pb-5 pt-1">
+
+      <h1 class="text-3xl font-bold text-purple-600 pb-2">
+        Tipit - history
+      </h1>
+      <div class="pb-2">
+        <p>Your tip history</p>
+      </div>
+
+      <section>
+      </section>
+
+    </div>
+  </main>
+
+    <!-- scipt to autofill inputs and display Splide tips -->
+    <script src="./assets/js/script.js"></script>
+
+  <script>
+    new Splide( '.splide' ).mount();
+  </script>
+</body>
+</html>

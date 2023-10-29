@@ -17,6 +17,9 @@ body, html {
   -webkit-font-smoothing: antialiased;
   /* background-color: #ddd; */
 }
+nav {
+  margin: auto;
+}
 main {
   display: flex;
   justify-content: center;
