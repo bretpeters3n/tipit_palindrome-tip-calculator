@@ -22,7 +22,8 @@ function tipChoice(choice) {
         let total = document.getElementById('hTotal').innerText;
         let tip = document.getElementById('hTip').innerText;
         let tipPerc = document.getElementById('hTipPerc').innerText;
-        console.log(highLow + ' ' + total + ' ' + tip + ' ' + tipPerc);
+        let eventDate = new Date();
+        console.log(highLow + ' ' + total + ' ' + tip + ' ' + tipPerc + ' ' + eventDate);
 
         // set and save tips object
         let tipEvent = {
@@ -30,8 +31,9 @@ function tipChoice(choice) {
             total: total,
             tip: tip,
             tipPerc: tipPerc,
+            eventDate: eventDate,
         };
-        let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total };
+        let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total, total: tipEvent.total, tipPerc: tipEvent.tipPerc, eventDate: tipEvent.eventDate };
         tipEvents.push(tipEventTest);
         localStorage.setItem('tipEvents', JSON.stringify(tipEvents));
     } else if (choice=='low') {
@@ -40,7 +42,8 @@ function tipChoice(choice) {
         let total = document.getElementById('lTotal').innerText;
         let tip = document.getElementById('lTip').innerText;
         let tipPerc = document.getElementById('lTipPerc').innerText;
-        console.log(highLow + ' ' + total + ' ' + tip + ' ' + tipPerc);
+        let eventDate = new Date();
+        console.log(highLow + ' ' + total + ' ' + tip + ' ' + tipPerc + ' ' + eventDate);
 
         // set and save tips object
         let tipEvent = {
@@ -48,8 +51,9 @@ function tipChoice(choice) {
             total: total,
             tip: tip,
             tipPerc: tipPerc,
+            eventDate: eventDate,
         };
-        let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total };
+        let tipEventTest = { highLow: tipEvent.highLow, total: tipEvent.total, total: tipEvent.total, tipPerc: tipEvent.tipPerc, eventDate: tipEvent.eventDate };
         tipEvents.push(tipEventTest);
         localStorage.setItem('tipEvents', JSON.stringify(tipEvents));
     } else {
@@ -57,12 +61,13 @@ function tipChoice(choice) {
     }
 }
 
-// saved tips object
+// saved initial tips object
 let tipEvent = {
     highLow: 'high',
     total: '$83.38',
     tip: '$14.38',
     tipPerc: '20.84%',
+    date: '01 January, 1970 00:00:00 Universal Time (UTC)',
 };
 
 // initiate tipEvents array and add first object ^
